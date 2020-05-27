@@ -16,8 +16,22 @@
   <!-- load the controllers -->
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-	output="screen" ns="/mini_chee" args="joint_state_controller FR_hip_Effort_controller FR_thigh_Effort_controller FR_calf_Effort_controller FL_hip_Effort_controller FL_thigh_Effort_controller FL_calf_Effort_controller RL_hip_Effort_controller RL_thigh_Effort_controller RL_calf_Effort_controller RR_hip_Effort_controller RR_thigh_Effort_controller RR_calf_Effort_controller  --timeout 50"/>
-	<!-- <node pkg="atlas_launch" name="mtnode" type="control.py" output="screen"> 
+	output="screen" ns="/mini_chee" args="joint_state_controller 
+	FR_hip_velocity_controller 
+	FR_thigh_velocity_controller 
+	FR_calf_velocity_controller 
+	FL_hip_velocity_controller 
+	FL_thigh_velocity_controller 
+	FL_calf_velocity_controller 
+	RL_hip_velocity_controller 
+	RL_thigh_velocity_controller 
+	RL_calf_velocity_controller 
+	RR_hip_velocity_controller 
+	RR_thigh_velocity_controller 
+	RR_calf_velocity_controller 
+	
+	--timeout 50"
+	/>
+	<!-- <node pkg="launch" name="mtnode" type="control.py" output="screen"> 
 	</node> -->
-					
 </launch>

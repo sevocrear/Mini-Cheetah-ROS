@@ -10,7 +10,7 @@
 		args="-urdf -model mini_cheetah -param robot_description -z 1">
 	</node>
  
-   <rosparam file="$(find cheetah_control)/launch/controller/cheetah_control_vel.yaml" command="load"/>
+   <rosparam file="$(find cheetah_control)/launch/controller/cheetah_control_cur.yaml" command="load"/>
 
 
   <!-- load the controllers -->
