@@ -1,0 +1,71 @@
+mini_chee:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Effort Controllers ---------------------------------------
+
+  # First Left Leg
+  FL_hip_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FL_hip_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  FL_thigh_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FL_thigh_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  FL_calf_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FL_calf_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  # First Right Leg
+  FR_hip_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FR_hip_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  FR_thigh_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FR_thigh_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  FR_calf_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: FR_calf_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  #Back Left Leg
+  RL_hip_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RL_hip_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  RL_thigh_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RL_thigh_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  RL_calf_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RL_calf_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  # Back Right Leg
+  RR_hip_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RR_hip_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  RR_thigh_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RR_thigh_joint
+    pid: {p: 180, d: 0.9, i: 20}
+
+  RR_calf_Effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: RR_calf_joint
+    pid: {p: 180, d: 0.9, i: 20}      

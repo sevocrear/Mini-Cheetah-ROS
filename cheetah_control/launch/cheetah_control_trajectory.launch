@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	</include>
+
+	<param name="robot_description" command="xacro --inorder '$(find cheetah_description)/xacro/mini_cheetah_control.urdf'"/>
+<!---->	
+	<node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" 
+		args="-urdf -model mini_cheetah -param robot_description -z 1">
+	</node>
+ 
+   <rosparam file="$(find cheetah_control)/launch/controller/cheetah_control_trajectory.yaml" command="load"/>
+
+
+  <!-- load the controllers -->
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/mini_chee" args="joint_group_position_controller --timeout 50"/>
+	<!-- <node pkg="atlas_launch" name="mtnode" type="control.py" output="screen"> 
+	</node> -->
+					
+</launch>
