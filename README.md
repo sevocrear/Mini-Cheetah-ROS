@@ -1,5 +1,8 @@
 # Mini-Cheetah-ROS
 
+![mini](cheetah_show/Cheetah.png)
+
+
 ### In order to use this code, you shoud go through next steps:
 
 ```bash
@@ -46,3 +49,4 @@ roslaunch cheetah_control cheetah_control_current.launch
 ```bash
 roslaunch cheetah_control cheetah_control_velocity.launch
 ```
+
