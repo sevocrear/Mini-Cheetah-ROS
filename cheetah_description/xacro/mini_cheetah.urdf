@@ -8,13 +8,13 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_body.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_body.stl" />
             </geometry>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_body.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_body.stl" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </collision>
@@ -35,14 +35,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0 0" xyz="0 0 -0.055"/> -->
             <origin rpy="0 -3.1416 -1.5708" xyz="-0.055 0 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0 0" xyz="0 0 -0.055"/> -->
             <origin rpy="0 -3.1416 -1.5708" xyz="-0.055 0 0" />
@@ -63,14 +63,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
@@ -91,14 +91,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
@@ -153,14 +153,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0. 3.14159" xyz="0 0.0 -0.055"/> -->
             <origin rpy="0 0 -1.5708" xyz="-0.055 0.0 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0. 3.14159" xyz="0 0.0 -0.055"/> -->
             <origin rpy="0 0 -1.5708" xyz="-0.055 0.0 0" />
@@ -181,14 +181,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0  3.14159" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="1.5708 0  3.14159" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
@@ -209,14 +209,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
@@ -271,14 +271,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 0" xyz="0 0.0 0.055"/> -->
             <origin rpy="0 0 1.5708" xyz="0.055 0 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 0" xyz="0 0.0 0.055"/> -->
             <origin rpy="0 0 1.5708" xyz="0.055 0 0" />
@@ -299,14 +299,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 3.14159" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 3.14159" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
@@ -327,14 +327,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
@@ -390,14 +390,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 -3.141592" xyz="0 0.0 0.055"/> -->
             <origin rpy="-3.1416 0 -1.5708" xyz="0.055 0 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_abad.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_abad.stl" />
             </geometry>
             <!-- <origin rpy="-1.5708 0 -3.141592" xyz="0 0.0 0.055"/> -->
             <origin rpy="-3.1416 0 -1.5708" xyz="0.055 0 0" />
@@ -418,14 +418,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_upper_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0" />
@@ -446,14 +446,14 @@
         </inertial>
         <visual>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://cheetah_description/meshes/mini_lower_link.obj" />
+                <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl" />
             </geometry>
             <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
             <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0" />
