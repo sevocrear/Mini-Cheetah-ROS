@@ -7,7 +7,7 @@
 	<param name="robot_description" command="xacro --inorder '$(find cheetah_description)/xacro/mini_cheetah_control.urdf'"/>
 <!---->	
 	<node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" 
-		args="-urdf -model mini_cheetah -param robot_description -z 1">
+		args="-urdf -model mini_chee -param robot_description -z 1">
 	</node>
  
    <rosparam file="$(find cheetah_control)/launch/controller/cheetah_control_cur.yaml" command="load"/>
