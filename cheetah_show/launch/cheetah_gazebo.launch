@@ -4,7 +4,7 @@
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 	</include>
 
-	 <param name="robot_description" textfile="$(find cheetah_description)/xacro/mini_cheetah.urdf" />
+	 <param name="robot_description" command="xacro --inorder '$(find cheetah_description)/xacro/mini_cheetah.urdf.xacro'" />
 <!---->	
 	<node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" 
 		args="-urdf -model mini_cheetah -param robot_description -z 1">

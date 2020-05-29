@@ -10,62 +10,62 @@ mini_chee:
   FL_hip_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FL_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   FL_thigh_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FL_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   FL_calf_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FL_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   # First Right Leg
   FR_hip_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FR_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   FR_thigh_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FR_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   FR_calf_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: FR_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   #Back Left Leg
   RL_hip_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RL_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   RL_thigh_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RL_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   RL_calf_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RL_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   # Back Right Leg
   RR_hip_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RR_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   RR_thigh_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RR_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.1, i: 1}
 
   RR_calf_velocity_controller:
     type: effort_controllers/JointVelocityController
     joint: RR_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}      
+    pid: {p: 10, d: 0.1, i: 1}      
