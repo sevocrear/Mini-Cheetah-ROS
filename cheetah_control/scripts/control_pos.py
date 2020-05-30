@@ -29,7 +29,7 @@ class cheetah_control():
 		for i in range(1,self.joints_number+1):
 			self.pub[i]=rospy.Publisher(self.joint_name(self.joints[i]), Float64, queue_size=10)
 
-		self.rate_value = rate_value
+		self.rate = rospy.Rate(rate_value)
 
 
 
@@ -49,7 +49,7 @@ class cheetah_control():
 		9: 'RL_calf_position_controller',
 		10: 'RR_hip_position_controller', 
 		11: 'RR_thigh_position_controller', 
-		12: 'RR_calf_position_controller';
+		12: 'RR_calf_position_controller'
 
 
 		pos - angle in rad
@@ -64,10 +64,41 @@ class cheetah_control():
 if __name__ == '__main__':
 	cheetah_control_pos = cheetah_control()
 
+	LF_hip = (0.6, 0.25, 0.0, 0.0, 0.0, 0.0)
+	LF_upper = (0.0, 0.3, -0.0, 0.0, 0.0, 0.0)
+	LF_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+
+	RF_hip = (0.6, -0.25, 0.0, 0.0, 0.0, 0.0)
+	RF_upper = (0.0, -0.3, -0.0, 0.0, 0.0, 0.0)
+	RF_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+
+	LH_hip = (-0.6, 0.25, 0.0, 0.0, 0.0, 0.0)
+	LH_upper = (0.0, 0.3, -0.0, 0.0, 0.0, 0.0)
+	LH_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+
+	RH_hip = (-0.6, -0.25, 0.0, 0.0, 0.0, 0.0)
+	RH_upper = (0.0, -0.3, -0.0, 0.0, 0.0, 0.0)
+	RH_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+	len_configurations = len(LF_hip)
+
 	while not rospy.is_shutdown():
 		try:
-			cheetah_control_pos.move_joint_to_pos(3,np.pi/4)
-			cheetah_control_pos.move_joint_to_pos(6, np.pi/4)
+			for i in range(len_configurations):
+				cheetah_control_pos.move_joint_to_pos(1,LF_hip[i])
+				cheetah_control_pos.move_joint_to_pos(2,LF_upper[i])
+				cheetah_control_pos.move_joint_to_pos(3,LF_lower[i])
+
+				cheetah_control_pos.move_joint_to_pos(4,RF_hip[i])
+				cheetah_control_pos.move_joint_to_pos(5,RF_upper[i])
+				cheetah_control_pos.move_joint_to_pos(6,RF_lower[i])
+
+				cheetah_control_pos.move_joint_to_pos(7,LH_hip[i])
+				cheetah_control_pos.move_joint_to_pos(8,LH_upper[i])
+				cheetah_control_pos.move_joint_to_pos(9,LH_lower[i])
+
+				cheetah_control_pos.move_joint_to_pos(10,RH_hip[i])
+				cheetah_control_pos.move_joint_to_pos(11,RH_upper[i])
+				cheetah_control_pos.move_joint_to_pos(12,RH_lower[i])
 		except rospy.ROSInterruptException:
 			pass
-	cheetah_control_pos.rate_value.sleep()
+		cheetah_control_pos.rate.sleep()
