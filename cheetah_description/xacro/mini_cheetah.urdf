@@ -2,9 +2,10 @@
 <robot name="mini_cheetah">
   <link name="trunk">
     <inertial>
-      <mass value="3.3"/>
+      <mass value="2.1"/>
       <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.011253" ixy="0" ixz="0" iyy="0.036203" iyz="0" izz="0.042673"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
+      <!-- <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/> -->
     </inertial>
     <visual>
       <geometry>
@@ -29,9 +30,10 @@
   </joint>
   <link name="FR_hip">
     <inertial>
-      <mass value="0.54"/>
+      <mass value="0.05"/>
       <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.000381" ixy="0.000058" ixz="0.00000045" iyy="0.000560" iyz="0.00000095" izz="0.000444"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
+      <!-- <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/> -->
     </inertial>
     <visual>
       <geometry>
@@ -57,9 +59,9 @@
   </joint>
   <link name="FR_thigh">
     <inertial>
-      <mass value="0.634"/>
+      <mass value="0.8"/>
       <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.001983" ixy="0.000245" ixz="0.000013" iyy="0.002103" iyz="0.0000015" izz="0.000408"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -85,9 +87,9 @@
   </joint>
   <link name="FR_calf">
     <inertial>
-      <mass value="0.064"/>
+      <mass value="0.1"/>
       <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.000245" ixy="0" ixz="0.0" iyy="0.000248" iyz="0" izz="0.000006"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -105,13 +107,13 @@
     </collision>
   </link>
   <link name="FR_foot">
-    <!-- <contact>
+    <contact>
             <friction_anchor/>
             <stiffness value="30000.0"/>
             <damping value="1000.0"/>
             <spinning_friction value="0.3"/>
             <lateral_friction value="3.0"/>
-        </contact> -->
+        </contact>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -127,7 +129,7 @@
     </collision>
     <inertial>
       <mass value="0.15"/>
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
   </link>
   <joint name="FR_foot_fixed" type="fixed">
@@ -147,9 +149,9 @@
   </joint>
   <link name="FL_hip">
     <inertial>
-      <mass value="0.54"/>
+      <mass value="0.05"/>
       <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.000381" ixy="0.000058" ixz="0.00000045" iyy="0.000560" iyz="0.00000095" izz="0.000444"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -175,9 +177,9 @@
   </joint>
   <link name="FL_thigh">
     <inertial>
-      <mass value="0.634"/>
+      <mass value="0.8"/>
       <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.001983" ixy="0.000245" ixz="0.000013" iyy="0.002103" iyz="0.0000015" izz="0.000408"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -203,9 +205,9 @@
   </joint>
   <link name="FL_calf">
     <inertial>
-      <mass value="0.064"/>
+      <mass value="0.1"/>
       <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.000245" ixy="0" ixz="0.0" iyy="0.000248" iyz="0" izz="0.000006"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -223,13 +225,13 @@
     </collision>
   </link>
   <link name="FL_foot">
-    <!-- <contact>
+    <contact>
             <friction_anchor/>
             <stiffness value="30000.0"/>
             <damping value="1000.0"/>
             <spinning_friction value="0.3"/>
             <lateral_friction value="3.0"/>
-        </contact> -->
+        </contact>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -245,7 +247,7 @@
     </collision>
     <inertial>
       <mass value="0.15"/>
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
   </link>
   <joint name="FL_foot_fixed" type="fixed">
@@ -265,9 +267,9 @@
   </joint>
   <link name="RR_hip">
     <inertial>
-      <mass value="0.54"/>
+      <mass value="0.05"/>
       <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.000381" ixy="0.000058" ixz="0.00000045" iyy="0.000560" iyz="0.00000095" izz="0.000444"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -293,9 +295,9 @@
   </joint>
   <link name="RR_thigh">
     <inertial>
-      <mass value="0.634"/>
+      <mass value="0.8"/>
       <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.001983" ixy="0.000245" ixz="0.000013" iyy="0.002103" iyz="0.0000015" izz="0.000408"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -321,9 +323,9 @@
   </joint>
   <link name="RR_calf">
     <inertial>
-      <mass value="0.064"/>
+      <mass value="0.1"/>
       <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.000245" ixy="0" ixz="0.0" iyy="0.000248" iyz="0" izz="0.000006"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -341,13 +343,13 @@
     </collision>
   </link>
   <link name="RR_foot">
-    <!-- <contact>
+    <contact>
             <friction_anchor/>
             <stiffness value="30000.0"/>
             <damping value="1000.0"/>
             <spinning_friction value="0.3"/>
             <lateral_friction value="3.0"/>
-        </contact> -->
+        </contact>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -363,7 +365,7 @@
     </collision>
     <inertial>
       <mass value="0.15"/>
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
   </link>
   <joint name="RR_foot_fixed" type="fixed">
@@ -384,9 +386,9 @@
   </joint>
   <link name="RL_hip">
     <inertial>
-      <mass value="0.54"/>
+      <mass value="0.05"/>
       <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.000381" ixy="0.000058" ixz="0.00000045" iyy="0.000560" iyz="0.00000095" izz="0.000444"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -412,9 +414,9 @@
   </joint>
   <link name="RL_thigh">
     <inertial>
-      <mass value="0.634"/>
+      <mass value="0.8"/>
       <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.001983" ixy="0.000245" ixz="0.000013" iyy="0.002103" iyz="0.0000015" izz="0.000408"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -440,9 +442,9 @@
   </joint>
   <link name="RL_calf">
     <inertial>
-      <mass value="0.064"/>
+      <mass value="0.1"/>
       <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.000245" ixy="0" ixz="0.0" iyy="0.000248" iyz="0" izz="0.000006"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
     <visual>
       <geometry>
@@ -460,13 +462,13 @@
     </collision>
   </link>
   <link name="RL_foot">
-    <!-- <contact>
+    <contact>
             <friction_anchor/>
             <stiffness value="30000.0"/>
             <damping value="1000.0"/>
             <spinning_friction value="0.3"/>
             <lateral_friction value="3.0"/>
-        </contact> -->
+        </contact>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -482,7 +484,7 @@
     </collision>
     <inertial>
       <mass value="0.15"/>
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
     </inertial>
   </link>
   <joint name="RL_foot_fixed" type="fixed">
