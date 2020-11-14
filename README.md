@@ -1,5 +1,5 @@
 # Mini-Cheetah-ROS
-
+* for urdf thx to [grassjelly and HitSZwang](https://github.com/HitSZwang/mini-cheetah-gazebo-urdf)
 ![mini](cheetah_show/Cheetah.png)
 
 

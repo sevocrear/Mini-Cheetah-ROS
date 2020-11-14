@@ -1,498 +1,728 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <robot name="mini_cheetah">
-  <link name="trunk">
-    <inertial>
-      <mass value="2.1"/>
-      <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-      <!-- <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/> -->
-    </inertial>
+  <!-- joint limits -->
+  <!-- <xacro:property name="damping" value="0"/>
+    <xacro:property name="friction" value="0"/>
+    <xacro:property name="hip_max" value="120"/>
+    <xacro:property name="hip_min" value="-120"/>
+    <xacro:property name="hip_velocity_max" value="52.4"/>
+    <xacro:property name="hip_torque_max" value="20"/>
+    <xacro:property name="thigh_max" value="270"/>
+    <xacro:property name="thigh_min" value="-270"/>
+    <xacro:property name="thigh_velocity_max" value="28.6"/>
+    <xacro:property name="thigh_torque_max" value="55"/>
+    <xacro:property name="calf_max" value="155"/>
+    <xacro:property name="calf_min" value="-155"/>
+    <xacro:property name="calf_velocity_max" value="28.6"/>
+    <xacro:property name="calf_torque_max" value="55"/> -->
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="silver">
+    <color rgba="0.913725490196 0.913725490196 0.847058823529 1.0"/>
+  </material>
+  <material name="orange">
+    <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+  </material>
+  <material name="brown">
+    <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0"/>
+  </material>
+  <material name="white_gray">
+    <color rgba="0.823529411765 0.823529411765 0.823529411765 1.0"/>
+  </material>
+  <material name="gold">
+    <color rgba="0.811764705882 0.678431372549 0.301960784314 1.0"/>
+  </material>
+  <material name="white_blue">
+    <color rgba="0.462745098039 0.8 0.992156862745 1.0"/>
+  </material>
+  <material name="white_black">
+    <color rgba="0.494117647059 0.494117647059 0.494117647059 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+  
+  <gazebo reference="base">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+  <gazebo reference="trunk">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <gazebo reference="stick_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
+  <gazebo reference="imu_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <!-- FL leg -->
+  <gazebo reference="FL_hip">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <!-- <material>Gazebo/DarkGrey</material> -->
+  </gazebo>
+  <gazebo reference="FL_thigh">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/White</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <gazebo reference="FL_calf">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+  </gazebo>
+  <gazebo reference="FL_foot">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/DarkGrey</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <!-- FR leg -->
+  <gazebo reference="FR_hip">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <!-- <material>Gazebo/DarkGrey</material> -->
+  </gazebo>
+  <gazebo reference="FR_thigh">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/White</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <gazebo reference="FR_calf">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+  </gazebo>
+  <gazebo reference="FR_foot">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/DarkGrey</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <!-- RL leg -->
+  <gazebo reference="RL_hip">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <!-- <material>Gazebo/DarkGrey</material> -->
+  </gazebo>
+  <gazebo reference="RL_thigh">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/White</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <gazebo reference="RL_calf">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+  </gazebo>
+  <gazebo reference="RL_foot">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/DarkGrey</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <!-- RR leg -->
+  <gazebo reference="RR_hip">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <!-- <material>Gazebo/Gold</material> -->
+  </gazebo>
+  <gazebo reference="RR_thigh">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/White</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+  <gazebo reference="RR_calf">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+  </gazebo>
+  <gazebo reference="RR_foot">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <self_collide>1</self_collide>
+    <material>Gazebo/DarkGrey</material>
+    <kp value="1000000.0"/>
+    <kd value="1.0"/>
+  </gazebo>
+ 
+  <link name="trunk"/>
+  <link name="trunk_interia">
     <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_body.stl"/>
+        <mesh filename="package://cheetah_description/meshes/trunk.STL" scale="1 1 1"/>
       </geometry>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <material name="white_gray"/>
     </visual>
     <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_body.stl"/>
-      </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/trunk.STL" scale="1 1 1"/> -->
+        <box size="0.3 0.2 0.093"/>
+      </geometry>
     </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="3.3"/>
+      <inertia ixx="0.011253" ixy="0" ixz="0.0" iyy="0.036203" iyz="-0.0" izz="0.042673"/>
+    </inertial>
   </link>
-  <!--!!!!!!!!!!!! Front Right Leg !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-  <joint name="FR_hip_joint" type="continuous">
-    <axis xyz="1 0 0"/>
-    <!-- <origin rpy="1.57079632679 0 1.57079632679" xyz="0.19 -0.049 0.0"/> -->
-    <origin rpy="0 0 0" xyz="0.19 -0.049 0.0"/>
+  <joint name="trunk_to_trunk_inertia" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="trunk"/>
-    <child link="FR_hip"/>
+    <child link="trunk_interia"/>
   </joint>
-  <link name="FR_hip">
-    <inertial>
-      <mass value="0.05"/>
-      <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-      <!-- <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/> -->
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0 0" xyz="0 0 -0.055"/> -->
-      <origin rpy="0 -3.1416 -1.5708" xyz="-0.055 0 0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0 0" xyz="0 0 -0.055"/> -->
-      <origin rpy="0 -3.1416 -1.5708" xyz="-0.055 0 0"/>
-    </collision>
-  </link>
-  <joint name="FR_thigh_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 1.5708 0.0" xyz="-0.062 0 0.00"/> -->
-    <origin rpy="0.0 0.0 0.0" xyz="0 -0.062 0"/>
-    <parent link="FR_hip"/>
-    <child link="FR_thigh"/>
-  </joint>
-  <link name="FR_thigh">
-    <inertial>
-      <mass value="0.8"/>
-      <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <joint name="FR_calf_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 0 0.0" xyz="0.209 0 0 "/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 0 -0.209 "/>
-    <parent link="FR_thigh"/>
-    <child link="FR_calf"/>
-  </joint>
-  <link name="FR_calf">
-    <inertial>
-      <mass value="0.1"/>
-      <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <link name="FR_foot">
-    <contact>
-            <friction_anchor/>
-            <stiffness value="30000.0"/>
-            <damping value="1000.0"/>
-            <spinning_friction value="0.3"/>
-            <lateral_friction value="3.0"/>
-        </contact>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-      <material name="yellow"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.15"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-  </link>
-  <joint name="FR_foot_fixed" type="fixed">
-    <parent link="FR_calf"/>
-    <child link="FR_foot"/>
-    <!-- <origin xyz="0.18 0 0"/> -->
-    <origin xyz="0 0 -0.18"/>
-    <dynamics damping="0.0" friction="0.0"/>
-  </joint>
-  <!--!!!!!!!!!!!! Front Left Leg !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-  <joint name="FL_hip_joint" type="continuous">
-    <axis xyz="1 0 0"/>
-    <!-- <origin rpy="1.5708 0 1.5708" xyz="0.19 0.049 0.0"/> -->
-    <origin rpy="0 0 0" xyz="0.19 0.049 0.0"/>
-    <parent link="trunk"/>
-    <child link="FL_hip"/>
-  </joint>
-  <link name="FL_hip">
-    <inertial>
-      <mass value="0.05"/>
-      <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0. 3.14159" xyz="0 0.0 -0.055"/> -->
-      <origin rpy="0 0 -1.5708" xyz="-0.055 0.0 0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0. 3.14159" xyz="0 0.0 -0.055"/> -->
-      <origin rpy="0 0 -1.5708" xyz="-0.055 0.0 0"/>
-    </collision>
-  </link>
-  <joint name="FL_thigh_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 1.5708 0.0" xyz="0.062 0 0.00"/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 0.062 0"/>
-    <parent link="FL_hip"/>
-    <child link="FL_thigh"/>
-  </joint>
-  <link name="FL_thigh">
-    <inertial>
-      <mass value="0.8"/>
-      <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0  3.14159" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="1.5708 0  3.14159" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <joint name="FL_calf_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 0 0.0" xyz="0.209 0.0 0"/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 0 -0.209"/>
-    <parent link="FL_thigh"/>
-    <child link="FL_calf"/>
-  </joint>
-  <link name="FL_calf">
-    <inertial>
-      <mass value="0.1"/>
-      <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <link name="FL_foot">
-    <contact>
-            <friction_anchor/>
-            <stiffness value="30000.0"/>
-            <damping value="1000.0"/>
-            <spinning_friction value="0.3"/>
-            <lateral_friction value="3.0"/>
-        </contact>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-      <material name="yellow"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.15"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-  </link>
-  <joint name="FL_foot_fixed" type="fixed">
-    <parent link="FL_calf"/>
-    <child link="FL_foot"/>
-    <!-- <origin xyz="0.18 0 0"/> -->
-    <origin xyz="0 0 -0.18"/>
-    <dynamics damping="0.0" friction="0.0"/>
-  </joint>
-  <!--!!!!!!!!!!!! Hind Right Leg !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-  <joint name="RR_hip_joint" type="continuous">
-    <axis xyz="1 0 0"/>
-    <!-- <origin rpy="1.57079632679 0 1.57079632679" xyz="-0.19 -0.049 0.0"/> -->
-    <origin rpy="0 0 0" xyz="-0.19 -0.049 0.0"/>
-    <parent link="trunk"/>
-    <child link="RR_hip"/>
-  </joint>
-  <link name="RR_hip">
-    <inertial>
-      <mass value="0.05"/>
-      <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.5708 0 0" xyz="0 0.0 0.055"/> -->
-      <origin rpy="0 0 1.5708" xyz="0.055 0 0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.5708 0 0" xyz="0 0.0 0.055"/> -->
-      <origin rpy="0 0 1.5708" xyz="0.055 0 0"/>
-    </collision>
-  </link>
-  <joint name="RR_thigh_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 1.5708 0.0" xyz="-0.062 0 0.00"/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 -0.062 0"/>
-    <parent link="RR_hip"/>
-    <child link="RR_thigh"/>
-  </joint>
-  <link name="RR_thigh">
-    <inertial>
-      <mass value="0.8"/>
-      <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.5708 0 3.14159" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.5708 0 3.14159" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <joint name="RR_calf_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 0 0.0" xyz="0.209 0 0 "/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 0 -0.209 "/>
-    <parent link="RR_thigh"/>
-    <child link="RR_calf"/>
-  </joint>
-  <link name="RR_calf">
-    <inertial>
-      <mass value="0.1"/>
-      <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-    <visual>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <link name="RR_foot">
-    <contact>
-            <friction_anchor/>
-            <stiffness value="30000.0"/>
-            <damping value="1000.0"/>
-            <spinning_friction value="0.3"/>
-            <lateral_friction value="3.0"/>
-        </contact>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-      <material name="yellow"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.15"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
-  </link>
-  <joint name="RR_foot_fixed" type="fixed">
-    <parent link="RR_calf"/>
-    <child link="RR_foot"/>
-    <child link="FR_foot"/>
-    <!-- <origin xyz="0.18 0 0"/> -->
-    <origin xyz="0 0 -0.18"/>
-    <dynamics damping="0.0" friction="0.0"/>
-  </joint>
-  <!--!!!!!!!!!!!! Hind Left Leg !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-  <joint name="RL_hip_joint" type="continuous">
-    <axis xyz="1 0 0"/>
-    <!-- <origin rpy="1.5708 0 1.5708" xyz="-0.19 0.049 0.0"/> -->
-    <origin rpy="0 0 0" xyz="-0.19 0.049 0.0"/>
+ 
+  <!-- //////////////////////hip//////////////////// -->
+  <joint name="RL_hip_joint" type="revolute">
+    <!-- <joint name="${name}_hip_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="-0.196 0.049664 0"/>
     <parent link="trunk"/>
     <child link="RL_hip"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.872664625997" upper="1.0471975512" velocity="10.6"/>
   </joint>
   <link name="RL_hip">
-    <inertial>
-      <mass value="0.05"/>
-      <origin xyz="0.0 0.036 0."/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
     <visual>
+      <origin rpy="3.14159265359 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
+        <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/>
       </geometry>
-      <!-- <origin rpy="-1.5708 0 -3.141592" xyz="0 0.0 0.055"/> -->
-      <origin rpy="-3.1416 0 -1.5708" xyz="0.055 0 0"/>
+      <material name="gold"/>
     </visual>
     <collision>
+    
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_abad.stl"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/> -->
+        <box size="0.09 0.08 0.093"/>
       </geometry>
-      <!-- <origin rpy="-1.5708 0 -3.141592" xyz="0 0.0 0.055"/> -->
-      <origin rpy="-3.1416 0 -1.5708" xyz="0.055 0 0"/>
     </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -0.036 0.0"/>
+      <mass value="0.57"/>
+      <inertia ixx="0.0007148275" ixy="0.0" ixz="0.0" iyy="0.0007955775" iyz="0.0" izz="0.00068875"/>
+    </inertial>
   </link>
-  <joint name="RL_thigh_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 1.5708 0.0" xyz="-0.062 0 0.00"/> -->
-    <origin rpy="0.0 0.0 0.0" xyz="0 0.062 0"/>
+  <!-- //////////////////////thigh//////////////////// -->
+  <joint name="RL_thigh_joint" type="revolute">
+    <!-- <joint name="${name}_thigh_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0.077476 0"/>
     <parent link="RL_hip"/>
     <child link="RL_thigh"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.523598775598" upper="3.92699081699" velocity="10.6"/>
   </joint>
   <link name="RL_thigh">
-    <inertial>
-      <mass value="0.8"/>
-      <origin xyz="0.0 0.016 -0.02"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
     <visual>
+      <origin rpy="3.14159265359 3.14159265359 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
+        <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/>
       </geometry>
-      <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
+      <material name="white_blue"/>
     </visual>
     <collision>
+      <!-- <xacro:if value="${mirror_dae == True}">
+                    <origin rpy="0 0 0" xyz="0 0 0"/>                 
+                </xacro:if>
+                <xacro:if value="${mirror_dae == False}">
+                    <origin rpy="${PI} ${PI} 0" xyz="0 0 0"/>
+                </xacro:if> -->
+      <origin rpy="0 0 0" xyz="0 0 -0.11"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_upper_link.stl"/>
+        <box size="0.043 0.034 0.22"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/> -->
       </geometry>
-      <!-- <origin rpy="-1.507  0 3.14" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 -1.5708 0" xyz="0.0 0.0 0.0"/>
+      <material name="white_blue"/>
     </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -0.016 -0.11"/>
+      <mass value="0.634"/>
+      <inertia ixx="0.00261820866667" ixy="0.0" ixz="0.0" iyy="0.00265482216667" iyz="0.0" izz="0.000158764166667"/>
+    </inertial>
   </link>
-  <joint name="RL_calf_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <!-- <origin rpy="0.0 0 0.0" xyz="0.209 0 0 "/> -->
-    <origin rpy="0.0 0 0.0" xyz="0 0 -0.209 "/>
+  <!-- //////////////////////calf//////////////////// -->
+  <joint name="RL_calf_joint" type="revolute">
+    <!-- <joint name="${name}_calf_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0 -0.2115"/>
     <parent link="RL_thigh"/>
     <child link="RL_calf"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <!-- <limit effort="${calf_torque_max}" velocity="${calf_velocity_max}" lower="${calf_min*PI/180.0}" upper="${calf_max*PI/180.0}"/> -->
+    <limit effort="20" lower="-3.14159265359" upper="3.14159265359" velocity="10.6"/>
   </joint>
   <link name="RL_calf">
-    <inertial>
-      <mass value="0.1"/>
-      <origin xyz="0.0 0.0 -0.209"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
-    </inertial>
     <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.009 0.0"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
+        <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/>
       </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
+      <material name="white_blue"/>
     </visual>
     <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 -0.1"/>
       <geometry>
-        <mesh filename="package://cheetah_description/meshes/mini_lower_link.stl"/>
-      </geometry>
-      <!-- <origin rpy="-1.57070 0 -1.5707" xyz="0.0 0.0 0.0"/> -->
-      <origin rpy="0 3.1416 0" xyz="0.0 0.0 0.0"/>
-    </collision>
-  </link>
-  <link name="RL_foot">
-    <contact>
-            <friction_anchor/>
-            <stiffness value="30000.0"/>
-            <damping value="1000.0"/>
-            <spinning_friction value="0.3"/>
-            <lateral_friction value="3.0"/>
-        </contact>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
-      </geometry>
-      <material name="yellow"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <sphere radius="0.015"/>
+        <box size="0.016 0.016 0.2"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/> -->
       </geometry>
     </collision>
     <inertial>
-      <mass value="0.15"/>
-      <inertia ixx="0.6" ixy="0" ixz="0.0" iyy="0.6" iyz="0" izz="0.6"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.064"/>
+      <inertia ixx="0.000214698666667" ixy="0.0" ixz="0.0" iyy="0.000214698666667" iyz="0.0" izz="2.73066666667e-06"/>
     </inertial>
   </link>
+  <!-- //////////////////////foot//////////////////// -->
   <joint name="RL_foot_fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23039"/>
     <parent link="RL_calf"/>
     <child link="RL_foot"/>
-    <!-- <origin xyz="0.18 0 0"/> -->
-    <origin xyz="0 0 -0.18"/>
-    <dynamics damping="0.0" friction="0.0"/>
   </joint>
-</robot>
+  <link name="RL_foot">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.018 0.02"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0.0 0.025"/>
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/> -->
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.2135e-05" ixy="0.0" ixz="0.0" iyy="4.2135e-05" iyz="0.0" izz="4.2135e-05"/>
+    </inertial>
+  </link>
+ 
+  <!-- //////////////////////hip//////////////////// -->
+  <joint name="FL_hip_joint" type="revolute">
+    <!-- <joint name="${name}_hip_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0.196 0.049664 0"/>
+    <parent link="trunk"/>
+    <child link="FL_hip"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.872664625997" upper="1.0471975512" velocity="10.6"/>
+  </joint>
+  <link name="FL_hip">
+    <visual>
+      <origin rpy="3.14159265359 3.14159265359 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="gold"/>
+    </visual>
+    <collision>
+     
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/> -->
+        <box size="0.09 0.08 0.093"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0 -0.036 0.0"/>
+      <mass value="0.57"/>
+      <inertia ixx="0.0007148275" ixy="0.0" ixz="0.0" iyy="0.0007955775" iyz="0.0" izz="0.00068875"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////thigh//////////////////// -->
+  <joint name="FL_thigh_joint" type="revolute">
+    <!-- <joint name="${name}_thigh_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0.077476 0"/>
+    <parent link="FL_hip"/>
+    <child link="FL_thigh"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.523598775598" upper="3.92699081699" velocity="10.6"/>
+  </joint>
+  <link name="FL_thigh">
+    <visual>
+      <origin rpy="3.14159265359 3.14159265359 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      <!-- <xacro:if value="${mirror_dae == True}">
+                    <origin rpy="0 0 0" xyz="0 0 0"/>                 
+                </xacro:if>
+                <xacro:if value="${mirror_dae == False}">
+                    <origin rpy="${PI} ${PI} 0" xyz="0 0 0"/>
+                </xacro:if> -->
+      <origin rpy="0 0 0" xyz="0 0 -0.11"/>
+      <geometry>
+        <box size="0.043 0.034 0.22"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/> -->
+      </geometry>
+      <material name="white_blue"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -0.016 -0.11"/>
+      <mass value="0.634"/>
+      <inertia ixx="0.00261820866667" ixy="0.0" ixz="0.0" iyy="0.00265482216667" iyz="0.0" izz="0.000158764166667"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////calf//////////////////// -->
+  <joint name="FL_calf_joint" type="revolute">
+    <!-- <joint name="${name}_calf_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0 -0.2115"/>
+    <parent link="FL_thigh"/>
+    <child link="FL_calf"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <!-- <limit effort="${calf_torque_max}" velocity="${calf_velocity_max}" lower="${calf_min*PI/180.0}" upper="${calf_max*PI/180.0}"/> -->
+    <limit effort="20" lower="-3.14159265359" upper="3.14159265359" velocity="10.6"/>
+  </joint>
+  <link name="FL_calf">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.009 0.0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 -0.1"/>
+      <geometry>
+        <box size="0.016 0.016 0.2"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/> -->
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.064"/>
+      <inertia ixx="0.000214698666667" ixy="0.0" ixz="0.0" iyy="0.000214698666667" iyz="0.0" izz="2.73066666667e-06"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////foot//////////////////// -->
+  <joint name="FL_foot_fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23039"/>
+    <parent link="FL_calf"/>
+    <child link="FL_foot"/>
+  </joint>
+  <link name="FL_foot">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.018 0.02"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0.0 0.025"/>
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/> -->
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.2135e-05" ixy="0.0" ixz="0.0" iyy="4.2135e-05" iyz="0.0" izz="4.2135e-05"/>
+    </inertial>
+  </link>
+ 
+  <!-- //////////////////////hip//////////////////// -->
+  <joint name="RR_hip_joint" type="revolute">
+    <!-- <joint name="${name}_hip_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="-0.196 -0.049664 0"/>
+    <parent link="trunk"/>
+    <child link="RR_hip"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-1.0471975512" upper="0.872664625997" velocity="10.6"/>
+  </joint>
+  <link name="RR_hip">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="gold"/>
+    </visual>
+    <collision>
 
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/> -->
+        <box size="0.09 0.08 0.093"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.036 0.0"/>
+      <mass value="0.57"/>
+      <inertia ixx="0.0007148275" ixy="0.0" ixz="0.0" iyy="0.0007955775" iyz="0.0" izz="0.00068875"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////thigh//////////////////// -->
+  <joint name="RR_thigh_joint" type="revolute">
+    <!-- <joint name="${name}_thigh_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 -0.077476 0"/>
+    <parent link="RR_hip"/>
+    <child link="RR_thigh"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.523598775598" upper="3.92699081699" velocity="10.6"/>
+  </joint>
+  <link name="RR_thigh">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      <!-- <xacro:if value="${mirror_dae == True}">
+                    <origin rpy="0 0 0" xyz="0 0 0"/>                 
+                </xacro:if>
+                <xacro:if value="${mirror_dae == False}">
+                    <origin rpy="${PI} ${PI} 0" xyz="0 0 0"/>
+                </xacro:if> -->
+      <origin rpy="0 0 0" xyz="0 0 -0.11"/>
+      <geometry>
+        <box size="0.043 0.034 0.22"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/> -->
+      </geometry>
+      <material name="white_blue"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.016 -0.11"/>
+      <mass value="0.634"/>
+      <inertia ixx="0.00261820866667" ixy="0.0" ixz="0.0" iyy="0.00265482216667" iyz="0.0" izz="0.000158764166667"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////calf//////////////////// -->
+  <joint name="RR_calf_joint" type="revolute">
+    <!-- <joint name="${name}_calf_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0 -0.2115"/>
+    <parent link="RR_thigh"/>
+    <child link="RR_calf"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <!-- <limit effort="${calf_torque_max}" velocity="${calf_velocity_max}" lower="${calf_min*PI/180.0}" upper="${calf_max*PI/180.0}"/> -->
+    <limit effort="20" lower="-3.14159265359" upper="3.14159265359" velocity="10.6"/>
+  </joint>
+  <link name="RR_calf">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.009 0.0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 -0.1"/>
+      <geometry>
+        <box size="0.016 0.016 0.2"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/> -->
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.064"/>
+      <inertia ixx="0.000214698666667" ixy="0.0" ixz="0.0" iyy="0.000214698666667" iyz="0.0" izz="2.73066666667e-06"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////foot//////////////////// -->
+  <joint name="RR_foot_fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23039"/>
+    <parent link="RR_calf"/>
+    <child link="RR_foot"/>
+  </joint>
+  <link name="RR_foot">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.018 0.02"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0.0 0.025"/>
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/> -->
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.2135e-05" ixy="0.0" ixz="0.0" iyy="4.2135e-05" iyz="0.0" izz="4.2135e-05"/>
+    </inertial>
+  </link>
+
+  <!-- //////////////////////hip//////////////////// -->
+  <joint name="FR_hip_joint" type="revolute">
+    <!-- <joint name="${name}_hip_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0.196 -0.049664 0"/>
+    <parent link="trunk"/>
+    <child link="FR_hip"/>
+    <axis xyz="1 0 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-1.0471975512" upper="0.872664625997" velocity="10.6"/>
+  </joint>
+  <link name="FR_hip">
+    <visual>
+      <origin rpy="0 3.14159265359 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="gold"/>
+    </visual>
+    <collision>
+   
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/hip.STL" scale="1 1 1"/> -->
+        <box size="0.09 0.08 0.093"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0 0.036 0.0"/>
+      <mass value="0.57"/>
+      <inertia ixx="0.0007148275" ixy="0.0" ixz="0.0" iyy="0.0007955775" iyz="0.0" izz="0.00068875"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////thigh//////////////////// -->
+  <joint name="FR_thigh_joint" type="revolute">
+    <!-- <joint name="${name}_thigh_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 -0.077476 0"/>
+    <parent link="FR_hip"/>
+    <child link="FR_thigh"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <limit effort="20" lower="-0.523598775598" upper="3.92699081699" velocity="10.6"/>
+  </joint>
+  <link name="FR_thigh">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      
+      <origin rpy="0 0 0" xyz="0 0 -0.11"/>
+      <geometry>
+        <box size="0.043 0.034 0.22"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/thigh.STL" scale="1 1 1"/> -->
+      </geometry>
+      <material name="white_blue"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.016 -0.11"/>
+      <mass value="0.634"/>
+      <inertia ixx="0.00261820866667" ixy="0.0" ixz="0.0" iyy="0.00265482216667" iyz="0.0" izz="0.000158764166667"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////calf//////////////////// -->
+  <joint name="FR_calf_joint" type="revolute">
+    <!-- <joint name="${name}_calf_joint" type="continuous"> -->
+    <origin rpy="0 0 0" xyz="0 0 -0.2115"/>
+    <parent link="FR_thigh"/>
+    <child link="FR_calf"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0" friction="0"/>
+    <!-- <limit effort="${calf_torque_max}" velocity="${calf_velocity_max}" lower="${calf_min*PI/180.0}" upper="${calf_max*PI/180.0}"/> -->
+    <limit effort="20" lower="-3.14159265359" upper="3.14159265359" velocity="10.6"/>
+  </joint>
+  <link name="FR_calf">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.009 0.0"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 -0.1"/>
+      <geometry>
+        <box size="0.016 0.016 0.2"/>
+        <!-- <mesh filename="package://cheetah_description/meshes/calf.STL" scale="1 1 1"/> -->
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.064"/>
+      <inertia ixx="0.000214698666667" ixy="0.0" ixz="0.0" iyy="0.000214698666667" iyz="0.0" izz="2.73066666667e-06"/>
+    </inertial>
+  </link>
+  <!-- //////////////////////foot//////////////////// -->
+  <joint name="FR_foot_fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23039"/>
+    <parent link="FR_calf"/>
+    <child link="FR_foot"/>
+  </joint>
+  <link name="FR_foot">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.018 0.02"/>
+      <geometry>
+        <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="white_black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0.0 0.025"/>
+      <geometry>
+        <!-- <mesh filename="package://cheetah_description/meshes/foot.STL" scale="1 1 1"/> -->
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.2135e-05" ixy="0.0" ixz="0.0" iyy="4.2135e-05" iyz="0.0" izz="4.2135e-05"/>
+    </inertial>
+  </link>
+
+</robot>

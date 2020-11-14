@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # license removed for brevity
 import rospy
 from std_msgs.msg import Float64
@@ -64,21 +64,21 @@ class cheetah_control():
 if __name__ == '__main__':
 	cheetah_control_pos = cheetah_control()
 
-	LF_hip = (0.6, 0.25, 0.0, 0.0, 0.0, 0.0)
-	LF_upper = (0.0, 0.3, -0.0, 0.0, 0.0, 0.0)
-	LF_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+	LF_hip = (0.0,)
+	LF_upper = (-0.45,)
+	LF_lower = (0.9,)
 
-	RF_hip = (0.6, -0.25, 0.0, 0.0, 0.0, 0.0)
-	RF_upper = (0.0, -0.3, -0.0, 0.0, 0.0, 0.0)
-	RF_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+	RF_hip = (0.0,)
+	RF_upper = (-0.45,)
+	RF_lower = (0.9,)
 
-	LH_hip = (-0.6, 0.25, 0.0, 0.0, 0.0, 0.0)
-	LH_upper = (0.0, 0.3, -0.0, 0.0, 0.0, 0.0)
-	LH_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+	LH_hip = (0.0,)
+	LH_upper = (-0.45,)
+	LH_lower = (0.9,)
 
-	RH_hip = (-0.6, -0.25, 0.0, 0.0, 0.0, 0.0)
-	RH_upper = (0.0, -0.3, -0.0, 0.0, 0.0, 0.0)
-	RH_lower = (0.0, 0.0, -0.75, 0.0, 0.0, 0.0)
+	RH_hip = (0.0,)
+	RH_upper = (-0.45,)
+	RH_lower = (0.9,)
 	len_configurations = len(LF_hip)
 
 	while not rospy.is_shutdown():
@@ -99,6 +99,6 @@ if __name__ == '__main__':
 				cheetah_control_pos.move_joint_to_pos(10,RH_hip[i])
 				cheetah_control_pos.move_joint_to_pos(11,RH_upper[i])
 				cheetah_control_pos.move_joint_to_pos(12,RH_lower[i])
+				cheetah_control_pos.rate.sleep()
 		except rospy.ROSInterruptException:
 			pass
-		cheetah_control_pos.rate.sleep()
