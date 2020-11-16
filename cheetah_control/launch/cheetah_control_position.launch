@@ -18,7 +18,7 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
 	output="screen" ns="/mini_chee" args="joint_state_controller FR_hip_position_controller FR_thigh_position_controller FR_calf_position_controller FL_hip_position_controller FL_thigh_position_controller FL_calf_position_controller RL_hip_position_controller RL_thigh_position_controller RL_calf_position_controller RR_hip_position_controller RR_thigh_position_controller RR_calf_position_controller  --timeout 50"/>
 
-	<node pkg="cheetah_control" name="mtnode" type="control_pos.py" output="screen"> 
-	</node>
+	<!-- <node pkg="cheetah_control" name="mtnode" type="control_pos.py" output="screen"> 
+	</node> -->
 					
 </launch>
