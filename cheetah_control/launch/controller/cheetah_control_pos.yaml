@@ -10,62 +10,62 @@ mini_chee:
   FL_hip_position_controller:
     type: effort_controllers/JointPositionController
     joint: FL_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   FL_thigh_position_controller:
     type: effort_controllers/JointPositionController
     joint: FL_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   FL_calf_position_controller:
     type: effort_controllers/JointPositionController
     joint: FL_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   # First Right Leg
   FR_hip_position_controller:
     type: effort_controllers/JointPositionController
     joint: FR_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   FR_thigh_position_controller:
     type: effort_controllers/JointPositionController
     joint: FR_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   FR_calf_position_controller:
     type: effort_controllers/JointPositionController
     joint: FR_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   #Back Left Leg
   RL_hip_position_controller:
     type: effort_controllers/JointPositionController
     joint: RL_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   RL_thigh_position_controller:
     type: effort_controllers/JointPositionController
     joint: RL_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   RL_calf_position_controller:
     type: effort_controllers/JointPositionController
     joint: RL_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   # Back Right Leg
   RR_hip_position_controller:
     type: effort_controllers/JointPositionController
     joint: RR_hip_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   RR_thigh_position_controller:
     type: effort_controllers/JointPositionController
     joint: RR_thigh_joint
-    pid: {p: 180, d: 0.9, i: 20}
+    pid: {p: 10, d: 0.9, i: 5}
 
   RR_calf_position_controller:
     type: effort_controllers/JointPositionController
     joint: RR_calf_joint
-    pid: {p: 180, d: 0.9, i: 20}      
+    pid: {p: 10, d: 0.9, i: 5}      
